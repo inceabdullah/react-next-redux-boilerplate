@@ -1,43 +1,61 @@
-import styles from '../styles/Home.module.css';
-import React from 'react';
-import {connect} from "react-redux";
-import actions from '../redux/actions';
+import styles from "../styles/Home.module.css";
+import React from "react";
+import { connect } from "react-redux";
+import actions from "../redux/actions";
+import "bootstrap/dist/css/bootstrap.css";
+import { Button } from "react-bootstrap";
 
 function Index(props) {
   const {
-    counter:{value:counter},
+    counter: { value: counter },
     incrementCounter,
-    decrementCounter
+    decrementCounter,
   } = props;
 
-  return (<>
-    <title>{ "React Next.js Redux Example Page" }</title>
-    <div className={styles.main}>
-      <div className={styles.head}>React Next.js Redux</div>
-      <div className={styles.container}>
-        <div><button onClick={decrementCounter}>-</button></div>
-        <div>{counter}</div>
-        <div><button onClick={incrementCounter}>+</button></div>
-      </div>
-      <div className={styles.note}>
-        <div className={styles.note_line}>
-          <div>Source: </div>
-          <a href={"https://github.com/inceabdullah/react-next-redux-boilerplate"}>https://github.com/inceabdullah/react-next-redux-boilerplate</a>
+  return (
+    <>
+      <title>{"React Next.js Redux Example Page"}</title>
+      <div className={styles.main}>
+        <div className={styles.head}>
+          <h1>React Next.js Redux</h1>{" "}
         </div>
-        <div className={styles.note_line}>
-          <div>Collaborators: </div>
-          <a href={"https://github.com/inceabdullah"}>inceabdullah</a>
-          <div>, </div>
-          <a href={"https://github.com/Khorkor"}>Khorkor</a>
+        <div className={styles.container}>
+          <div>
+            <Button onClick={decrementCounter}>-</Button>
+          </div>
+          <div style={{ fontSize: 24, marginLeft: 20, marginRight: 20 }}>
+            {counter}
+          </div>
+          <div>
+            <Button onClick={incrementCounter}>+</Button>
+          </div>
+        </div>
+        <div className={styles.note}>
+          <div className={styles.note_line}>
+            <div>Source: </div>
+            <a
+              href={
+                "https://github.com/inceabdullah/react-next-redux-boilerplate"
+              }
+            >
+              https://github.com/inceabdullah/react-next-redux-boilerplate
+            </a>
+          </div>
+          <div className={styles.note_line}>
+            <div>Collaborators: </div>
+            <a href={"https://github.com/inceabdullah"}>inceabdullah</a>
+            <div>, </div>
+            <a href={"https://github.com/Khorkor"}>Khorkor</a>
+          </div>
         </div>
       </div>
-    </div>
-    </>)
+    </>
+  );
 }
 
 const mapState = (state) => {
   return {
-    counter: state.counter
+    counter: state.counter,
   };
 };
 
